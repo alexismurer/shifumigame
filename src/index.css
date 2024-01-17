@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+.bg {
+  background: rgb(14, 0, 57);
+  background: linear-gradient(
+    214deg,
+    rgba(14, 0, 57, 1) 0%,
+    rgba(28, 1, 110, 1) 50%,
+    rgba(46, 0, 190, 1) 100%
+  );
+}
+
+.rock-icon {
+  box-shadow: 0px 0px 80px #607863;
+}
+
+.paper-icon {
+  box-shadow: 0px 0px 80px #2ebe9c;
+}
+
+.scissors-icon {
+  box-shadow: 0px 0px 80px #cac718;
+}
+
+.lizard-icon {
+  box-shadow: 0px 0px 80px #d2921b;
+}
+
+.spock-icon {
+  box-shadow: 0px 0px 80px #d45719;
+}
+
+.rules p {
+  color: black;
+}
