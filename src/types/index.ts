@@ -17,6 +17,7 @@ export type RulesModalProps = {
 export type GameProps = {
   gameMode: string;
   setPlayerScore: React.Dispatch<React.SetStateAction<number>>;
+  setAiScore: React.Dispatch<React.SetStateAction<number>>;
   result: string;
   setResult: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -24,5 +25,6 @@ export type GameProps = {
 export type TopProps = {
   gameMode: string;
   playerScore: number;
+  aiScore: number;
   resetScore: () => void;
 };

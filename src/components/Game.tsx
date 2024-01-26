@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import Choices from "./Choices";
 import { GameProps } from "../types";
 
-const Game = ({ gameMode, setPlayerScore, result, setResult }: GameProps) => {
+const Game = ({
+  gameMode,
+  setPlayerScore,
+  setAiScore,
+  result,
+  setResult,
+}: GameProps) => {
   const [userChoice, setUserChoice] = useState<string | null>(null);
   const [computerChoice, setComputerChoice] = useState<string | null>(null);
   const [trigger, setTrigger] = useState<number>(0);
@@ -36,7 +42,7 @@ const Game = ({ gameMode, setPlayerScore, result, setResult }: GameProps) => {
       setPlayerScore((prevScore) => prevScore + 1);
     } else {
       setResult("Computer wins!");
-      setPlayerScore((prevScore) => prevScore - 1);
+      setAiScore((prevScore) => prevScore + 1);
     }
   };
 

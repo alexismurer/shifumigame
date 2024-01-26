@@ -7,16 +7,17 @@ const App = () => {
   const [gameMode, setGameMode] = useState<string>("Rock-Paper-Scissors");
   const [playerScore, setPlayerScore] = useState<number>(0);
   const [result, setResult] = useState<string>("");
+  const [aiScore, setAiScore] = useState<number>(0);
 
-  const handleModeChange = (mode: string) => {
-    setGameMode(mode);
+  const resetScore = () => {
+    setAiScore(0);
     setPlayerScore(0);
     setResult("");
   };
 
-  const resetScore = () => {
-    setPlayerScore(0);
-    setResult("");
+  const handleModeChange = (mode: string) => {
+    setGameMode(mode);
+    resetScore();
   };
 
   return (
@@ -24,11 +25,13 @@ const App = () => {
       <Top
         gameMode={gameMode}
         playerScore={playerScore}
+        aiScore={aiScore}
         resetScore={resetScore}
       />
       <Game
         gameMode={gameMode}
         setPlayerScore={setPlayerScore}
+        setAiScore={setAiScore}
         result={result}
         setResult={setResult}
       />
