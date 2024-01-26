@@ -1,12 +1,6 @@
-import React from "react";
+import { TopProps } from "../types";
 
-interface TopProps {
-  gameMode: string;
-  playerScore: number;
-  resetScore: () => void;
-}
-
-const Top: React.FC<TopProps> = ({ gameMode, playerScore, resetScore }) => {
+const Top = ({ gameMode, playerScore, resetScore }: TopProps) => {
   return (
     <div className="p-4 px-6 flex justify-between items-center">
       <h1 className="text-3xl font-bold">Shifumi</h1>

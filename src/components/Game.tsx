@@ -2,20 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import Choices from "./Choices";
+import { GameProps } from "../types";
 
-interface GameProps {
-  gameMode: string;
-  setPlayerScore: React.Dispatch<React.SetStateAction<number>>;
-  result: string;
-  setResult: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Game: React.FC<GameProps> = ({
-  gameMode,
-  setPlayerScore,
-  result,
-  setResult,
-}) => {
+const Game = ({ gameMode, setPlayerScore, result, setResult }: GameProps) => {
   const [userChoice, setUserChoice] = useState<string | null>(null);
   const [computerChoice, setComputerChoice] = useState<string | null>(null);
   const [trigger, setTrigger] = useState<number>(0);
@@ -28,7 +17,7 @@ const Game: React.FC<GameProps> = ({
     setTrigger(trigger + 1);
   };
 
-  const generateComputerChoice = (): string => {
+  const generateComputerChoice = () => {
     return choices[Math.floor(Math.random() * choices.length)];
   };
 
@@ -58,7 +47,7 @@ const Game: React.FC<GameProps> = ({
     <div className="p-4 text-center">
       {result != "" ? (
         <motion.div key={trigger}>
-          <div className="flex items-center justify-around p-6">
+          <div className="flex items-center justify-evenly py-6">
             <motion.div
               initial={{ opacity: 0, x: -150 }}
               animate={{ opacity: 1, x: 0 }}

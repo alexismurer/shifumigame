@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Top from "./components/Top";
 import Game from "./components/Game";
 import Bottom from "./components/Bottom";
 
-const App: React.FC = () => {
+const App = () => {
   const [gameMode, setGameMode] = useState<string>("Rock-Paper-Scissors");
   const [playerScore, setPlayerScore] = useState<number>(0);
   const [result, setResult] = useState<string>("");

@@ -1,12 +1,9 @@
 import { useState } from "react";
+
 import RulesModal from "./RulesModal";
+import { BottomProps } from "../types";
 
-interface BottomProps {
-  gameMode: string;
-  handleModeChange: (mode: string) => void;
-}
-
-const Bottom: React.FC<BottomProps> = ({ gameMode, handleModeChange }) => {
+const Bottom = ({ gameMode, handleModeChange }: BottomProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="p-4 flex justify-between">

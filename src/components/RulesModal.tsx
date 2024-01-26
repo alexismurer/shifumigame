@@ -1,11 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-interface RulesModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-  gameMode: string;
-}
+import { RulesModalProps } from "../types";
 
 const RulesModal = ({ isOpen, closeModal, gameMode }: RulesModalProps) => {
   return (
@@ -41,15 +37,19 @@ const RulesModal = ({ isOpen, closeModal, gameMode }: RulesModalProps) => {
                     <div className="text-black text-xl font-semibold pb-3">
                       {gameMode}
                     </div>
+                    <img
+                      src={
+                        gameMode === "Rock-Paper-Scissors"
+                          ? `images/diagram1.png`
+                          : `images/diagram2.png`
+                      }
+                      alt="computer choice"
+                      width={300}
+                      height={300}
+                      className="pb-3"
+                    />
                     {gameMode === "Rock-Paper-Scissors-Lizard-Spock" ? (
                       <>
-                        <img
-                          src={`images/diagram2.png`}
-                          alt="computer choice"
-                          width={300}
-                          height={300}
-                          className="pb-3"
-                        />
                         <div className="rules">
                           <p>
                             Rock, Paper, Scissors, Lizard, Spock is a game of
@@ -77,13 +77,6 @@ const RulesModal = ({ isOpen, closeModal, gameMode }: RulesModalProps) => {
                       </>
                     ) : (
                       <>
-                        <img
-                          src={`images/diagram1.png`}
-                          alt="computer choice"
-                          width={300}
-                          height={300}
-                          className="pb-3"
-                        />
                         <div className="rules">
                           <p>
                             Rock-Paper-Scissors is a game played to settle
