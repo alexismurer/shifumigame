@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { motion } from "framer-motion";
 
 import Choices from "./Choices";
 import { GameProps } from "../types";
+
+// @ts-ignore
+import Player from "../models/Player";
+// @ts-ignore
+import Monster from "../models/Monster";
+import { Canvas } from "@react-three/fiber";
 
 const Game = ({
   gameMode,
@@ -52,39 +58,74 @@ const Game = ({
   return (
     <div className="p-4 text-center">
       {result != "" ? (
-        <motion.div key={trigger}>
-          <div className="flex items-center justify-evenly py-6">
+        <motion.div>
+          <div className="flex items-center justify-around px-16">
             <motion.div
               initial={{ opacity: 0, x: -150 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.5 }}
+              className="h-[480px] hidden md:block"
             >
-              <img
-                src={`images/${userChoice}.png`}
-                alt="user choice"
-                width={180}
-                height={180}
-                className={`${userChoice}-icon rounded-full`}
-              />
+              <Canvas>
+                <ambientLight intensity={1} />
+                <directionalLight position={[5, 1, 1]} intensity={3} />
+                <Suspense fallback={null}>
+                  <Player />
+                </Suspense>
+              </Canvas>
             </motion.div>
 
-            <img src="images/vs.png" alt="vs" width={60} height={60} />
+            <motion.div key={trigger} className="flex items-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="p-12"
+              >
+                <img
+                  src={`images/${userChoice}.png`}
+                  alt="user choice"
+                  width={120}
+                  height={120}
+                  className={`${userChoice}-icon rounded-full`}
+                />
+              </motion.div>
+
+              <img src="images/vs.png" alt="vs" width={60} height={60} />
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="p-12"
+              >
+                <img
+                  src={`images/${computerChoice}.png`}
+                  alt="computer choice"
+                  width={120}
+                  height={120}
+                  className={`${computerChoice}-icon rounded-full`}
+                />
+              </motion.div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="h-[480px] hidden md:block"
             >
-              <img
-                src={`images/${computerChoice}.png`}
-                alt="computer choice"
-                width={180}
-                height={180}
-                className={`${computerChoice}-icon rounded-full`}
-              />
+              <Canvas>
+                <ambientLight intensity={2} />
+                <directionalLight position={[-4, 1, 1]} intensity={3} />
+                <Suspense fallback={null}>
+                  <Monster />
+                </Suspense>
+              </Canvas>
             </motion.div>
           </div>
           <motion.div
+            key={trigger}
             initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.4 }}
