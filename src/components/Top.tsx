@@ -14,7 +14,7 @@ const Top = ({ gameMode, playerScore, resetScore, aiScore }: TopProps) => {
         </p>
         <button
           onClick={() => resetScore()}
-          className="bg-white text-[#2e00be] px-3 py-1 mt-1 rounded-full mr-2 hover:-translate-x-1 hover:translate-y-1 duration-300 ease-in-out hover:bg-[#2e00be] hover:text-white"
+          className="relative bg-white text-[#2e00be] px-3 py-1 rounded-full mr-2 hover:-translate-x-1 hover:translate-y-1 duration-300 ease-in-out hover:bg-[#2e00be] hover:text-white"
         >
           Reset score
         </button>

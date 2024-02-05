@@ -13,13 +13,13 @@ const Bottom = ({ gameMode, handleModeChange }: BottomProps) => {
             ? handleModeChange("Rock-Paper-Scissors-Lizard-Spock")
             : handleModeChange("Rock-Paper-Scissors")
         }
-        className="bg-white text-[#0e0039] px-5 py-3 rounded-full mr-2 hover:translate-x-1 hover:-translate-y-1 duration-300 ease-in-out hover:bg-[#0e0039] hover:text-white"
+        className="relative bg-white text-[#0e0039] px-5 py-3 rounded-full mr-2 hover:translate-x-1 hover:-translate-y-1 duration-300 ease-in-out hover:bg-[#0e0039] hover:text-white"
       >
         Change Game Mode
       </button>
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-white text-[#0e0039] px-5 py-3 rounded-full mr-2 hover:-translate-x-1 hover:-translate-y-1 duration-300 ease-in-out hover:bg-[#0e0039] hover:text-white"
+        className="relative bg-white text-[#0e0039] px-5 py-3 rounded-full mr-2 hover:-translate-x-1 hover:-translate-y-1 duration-300 ease-in-out hover:bg-[#0e0039] hover:text-white"
       >
         Rules
       </button>

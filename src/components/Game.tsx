@@ -64,7 +64,7 @@ const Game = ({
               initial={{ opacity: 0, x: -150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="h-[480px] hidden md:block"
+              className="h-[380px] hidden md:block"
             >
               <Canvas>
                 <ambientLight intensity={1} />
@@ -113,7 +113,7 @@ const Game = ({
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="h-[480px] hidden md:block"
+              className="h-[380px] hidden md:block"
             >
               <Canvas>
                 <ambientLight intensity={2} />
