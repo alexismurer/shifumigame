@@ -2,6 +2,7 @@ import { useState } from "react";
 import Top from "./components/Top";
 import Game from "./components/Game";
 import Bottom from "./components/Bottom";
+import Pluses from "./components/Pluses";
 
 const App = () => {
   const [gameMode, setGameMode] = useState<string>("Rock-Paper-Scissors");
@@ -23,18 +24,7 @@ const App = () => {
   return (
     <>
       <div className="flex flex-col h-screen justify-between bg">
-        <div className="absolute w-screen h-screen grid grid-cols-5 gap-4">
-          {Array.from({ length: 20 }, (_, index) => {
-            return (
-              <div
-                key={index}
-                className="text-white p-4 flex text-5xl font-thin items-center justify-center opacity-5 hover:opacity-30 ease-in-out duration-300 cursor-default"
-              >
-                +
-              </div>
-            );
-          })}
-        </div>
+        <Pluses />
         <Top
           gameMode={gameMode}
           playerScore={playerScore}
