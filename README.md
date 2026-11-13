@@ -6,7 +6,7 @@ A small browser game built as an exercise for Play/Makers. Two animated 3D chara
 
 **[Play it live →](https://shifumigame.vercel.app/)**
 
-![Game](docs/screenshots/game.jpg)
+![A few classic rounds](docs/gifs/classic.gif)
 
 ## Features
 
@@ -16,7 +16,7 @@ A small browser game built as an exercise for Play/Makers. Two animated 3D chara
 - **Rules at a glance**: a diagram and list of every matchup for the current mode
 - **Session score** with a one-click reset
 
-![Rules](docs/screenshots/rules.jpg)
+![Lizard · Spock mode and the rules](docs/gifs/spock.gif)
 
 ## Tech stack
 
