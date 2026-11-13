@@ -1,108 +1,83 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
+import HandIcon from "./HandIcon";
+import RulesDiagram from "./RulesDiagram";
 import { RulesModalProps } from "../types";
+import { capitalize, rulesFor } from "../game/rules";
 
 const RulesModal = ({ isOpen, closeModal, gameMode }: RulesModalProps) => {
+  const extended = gameMode === "Rock-Paper-Scissors-Lizard-Spock";
+  const choices = extended ? ["rock", "paper", "scissors", "lizard", "spock"] : ["rock", "paper", "scissors"];
+
   return (
-    <>
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-90"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-90"
-              >
-                <Dialog.Panel className="relative w-full max-w-lg rounded-2xl bg-white p-6">
-                  <button
-                    className="absolute top-2 right-2 z-10 p-2"
-                    type="button"
-                    onClick={closeModal}
-                  >
-                    <img
-                      src="/close.svg"
-                      alt="close"
-                      width={20}
-                      height={20}
-                      className="object-contain"
-                    />
-                  </button>
-                  <div className="flex flex-col gap-3 items-center">
-                    <div className="text-black text-xl font-semibold pb-3">
-                      {gameMode}
-                    </div>
-                    <img
-                      src={
-                        gameMode === "Rock-Paper-Scissors"
-                          ? `images/diagram1.png`
-                          : `images/diagram2.png`
-                      }
-                      alt="computer choice"
-                      width={300}
-                      height={300}
-                      className="pb-3"
-                    />
-                    {gameMode === "Rock-Paper-Scissors-Lizard-Spock" ? (
-                      <>
-                        <div className="rules">
-                          <p>
-                            Rock, Paper, Scissors, Lizard, Spock is a game of
-                            chance that expands the traditional game of Rock,
-                            Paper, Scissors
-                          </p>
-                          <p className="py-5">
-                            It was made popular by the television show The Big
-                            Bang Theory
-                          </p>
-                          <p className="pb-3 font-semibold">
-                            The rules are as follows :
-                          </p>
-                          <p>Scissors cuts Paper</p>
-                          <p>Paper covers Rock</p>
-                          <p>Rock crushes Lizard</p>
-                          <p>Lizard poisons Spock</p>
-                          <p>Spock smashes Scissors</p>
-                          <p>Scissors decapitates Lizard</p>
-                          <p>Lizard eats Paper</p>
-                          <p>Paper disproves Spock</p>
-                          <p>Spock vaporizes Rock</p>
-                          <p>(and as it always has) Rock crushes Scissors</p>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="rules">
-                          <p>
-                            Rock-Paper-Scissors is a game played to settle
-                            disputes between two people
-                          </p>
-                          <p className="py-5">
-                            The game is played with three possible hand signals
-                            that represent a rock, paper, and scissors
-                          </p>
-                          <p className="pb-3 font-semibold">
-                            The rules are as follows :
-                          </p>
-                          <p>Scissors cuts Paper</p>
-                          <p>Paper covers Rock</p>
-                          <p>Rock crushes Scissors</p>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-200"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-150"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+        </Transition.Child>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="relative w-full max-w-lg rounded-3xl border border-white/10 bg-panel p-6 text-left shadow-2xl sm:p-8">
+                <button
+                  className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/5 text-white/60 transition hover:bg-white/10 hover:text-white"
+                  type="button"
+                  onClick={closeModal}
+                  aria-label="Close rules"
+                >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" aria-hidden>
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+
+                <Dialog.Title className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                  {extended ? "Lizard · Spock mode" : "Classic mode"}
+                </Dialog.Title>
+                <p className="mt-1 text-2xl font-bold tracking-tight">How to win</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  {extended
+                    ? "An expanded version of Rock, Paper, Scissors made popular by The Big Bang Theory. Each move beats two others and loses to two."
+                    : "The classic way to settle a dispute between two people, played with three hand signals."}
+                </p>
+
+                <div className="my-6 flex justify-center">
+                  <RulesDiagram choices={choices} />
+                </div>
+
+                <ul className={`grid gap-2 ${extended ? "sm:grid-cols-2" : ""}`}>
+                  {rulesFor(choices).map(([w, verb, l]) => (
+                    <li key={`${w}-${l}`} className="flex items-center gap-2 rounded-xl bg-panel2 px-3 py-2 text-sm">
+                      <HandIcon choice={w} className="h-6 w-6 shrink-0" />
+                      <span>
+                        <span className="font-semibold">{capitalize(w)}</span> <span className="text-white/50">{verb}</span>{" "}
+                        <span className="font-semibold">{capitalize(l)}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
-        </Dialog>
-      </Transition>
-    </>
+        </div>
+      </Dialog>
+    </Transition>
   );
 };
 

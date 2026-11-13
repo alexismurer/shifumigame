@@ -1,73 +1,39 @@
-<div align="center">
-  <h3 align="center">Shifumi Game (for Play/Makers) </h3>
-  <br />
-    <a href="https://shifumigame.vercel.app/" target="_blank"> 
-      <img src="https://github.com/alexismurer/shifumigame/blob/main/public/images/screenshot.png" alt="game screenshot">
-    </a>
-  <br />
-  <div>
-    <img src="https://img.shields.io/badge/-React_JS-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="react.js" />
-    <img src="https://img.shields.io/badge/-Typescript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-  </div>
-</div>
+# Shifumi
 
-## 📋 <a name="table">Table of Contents</a>
+**Rock, Paper, Scissors against the computer, with a Lizard · Spock mode for the brave.**
 
-1. 🔋 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🤸 [Quick Start](#quick-start)
+A small browser game built as an exercise for Play/Makers. Two animated 3D characters face off while you pick a hand; the round result, the rule that decided it and the running score update instantly.
 
-## <a name="introduction">🔋 Introduction</a>
+**[Play it live →](https://shifumigame.vercel.app/)**
 
-Built on ReactJS and TypeScript this application is a Rock-Paper-Scissors game I made as a small exercise for Play/Makers.
+![Game](docs/screenshots/game.jpg)
 
-👉 **Game difficulty:** Possibility to switch between different game modes
+## Features
 
-👉 **Help:** A set of rules to understand the game's logic
+- **Two modes**: Classic (rock, paper, scissors) and Lizard · Spock (five moves, ten rules); switching resets the score
+- **Instant rounds**: the CPU picks at the same time and the winning rule is spelled out ("Lizard poisons Spock")
+- **3D fighters**: animated characters rendered with React Three Fiber on each side of the arena
+- **Rules at a glance**: a diagram and list of every matchup for the current mode
+- **Session score** with a one-click reset
 
-👉 **Score:** A total score for the current game session with a possibility to reset it
+![Rules](docs/screenshots/rules.jpg)
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+## Tech stack
 
-- React.js
-- TypeScript
-- TailwindCSS
-- Framer Motion
-- headlessui
+React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · React Three Fiber · Drei · Headless UI
 
-## <a name="quick-start">🤸 Quick Start</a>
+The hand gestures, rules diagram and favicon are hand-built SVGs; the only bitmaps left are the 3D models' textures.
 
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/alexismurer/shifumigame.git
-cd your-project
-```
-
-**Installation**
-
-Install the project dependencies using npm:
+## Getting started
 
 ```bash
 npm install
-```
-
-**Running the Project**
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
-
-A live version of the project can be found at [https://shifumigame.vercel.app/](https://shifumigame.vercel.app/).
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Lint the project |

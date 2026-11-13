@@ -21,7 +21,8 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen justify-between bg">
+    <div className="stage relative flex min-h-dvh w-full flex-col overflow-x-hidden">
+      <div aria-hidden className="floor pointer-events-none absolute inset-x-0 bottom-0 h-2/3" />
       <Top
         gameMode={gameMode}
         playerScore={playerScore}
